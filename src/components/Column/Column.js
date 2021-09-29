@@ -37,8 +37,8 @@ class Column extends React.Component {
             <Icon name={this.props.icon} />
           </span>
         </h3>
-        {this.state.cards.map(({ key, title }) => (
-          <Card key={key} title={title} />
+        {this.state.cards.map((card) => (
+          <Card key={card.key} title={card.title} />
         ))}
         <Creator
           text={settings.cardCreatorText}
