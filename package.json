@@ -13,9 +13,7 @@
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": {
-    "src/**/*.js": "eslint"
-  },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
