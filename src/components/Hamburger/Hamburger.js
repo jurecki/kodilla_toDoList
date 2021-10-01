@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './Hamburger.scss';
 import List from '../List/List';
 import Creator from '../Creator/Creator';
-import { listData, pageContents, settings } from '../../data/dataStore';
+import { lists, pageContents, settings } from '../../data/dataStore';
 
 class Hamburger extends React.Component {
   state = {
     isActive: false,
-    lists: listData || [],
+    lists: lists || [],
   };
 
   addList(title) {
@@ -49,9 +49,9 @@ class Hamburger extends React.Component {
         >
           <h1 className={styles.title}>{pageContents.title}</h1>
           <h2 className={styles.subtitle}>{pageContents.subtitle}</h2>
-          {this.state.lists.map(({ key, ...listData }) => (
-            <List key={key} {...listData} />
-          ))}
+          {/* {this.state.lists.map(({ key, ...lists }) => (
+            <List key={key} {...lists} />
+          ))} */}
           <Creator
             text={settings.listCreatorText}
             action={(title) => this.addList(title)}
