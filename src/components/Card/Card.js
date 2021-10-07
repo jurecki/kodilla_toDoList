@@ -8,7 +8,7 @@ const Card = (props) => (
   </section>
 );
 
-Card.porpTypes = {
+Card.propTypes = {
   title: PropTypes.node,
 };
 
