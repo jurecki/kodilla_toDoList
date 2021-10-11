@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { createActionAddList } from '../../redux/listsRedux';
 import Hamburger from './Hamburger';
 
 const mapStateToProps = (state) => ({
@@ -7,4 +8,17 @@ const mapStateToProps = (state) => ({
   lists: state.lists,
 });
 
-export default connect(mapStateToProps)(Hamburger);
+const mapsDispatchToProps = (dispatch) => {
+  return {
+    addList: (title) =>
+      dispatch(
+        createActionAddList({
+          title,
+          description: 'Interesting things I want to check out!',
+          image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
+        })
+      ),
+  };
+};
+
+export default connect(mapStateToProps, mapsDispatchToProps)(Hamburger);

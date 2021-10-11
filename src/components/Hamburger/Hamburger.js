@@ -10,28 +10,12 @@ class Hamburger extends React.Component {
     title: PropTypes.node,
     subtitle: PropTypes.node,
     lists: PropTypes.array,
+    addList: PropTypes.func,
   };
 
   state = {
     isActive: true,
-    // lists: lists || [],
   };
-
-  // addList(title) {
-  //   this.setState((state) => ({
-  //     lists: [
-  //       ...state.lists,
-  //       {
-  //         key: state.lists.length
-  //           ? state.lists[state.lists.length - 1].key + 1
-  //           : 0,
-  //         title,
-  //         description: 'Interesting things I want to check out!',
-  //         image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
-  //       },
-  //     ],
-  //   }));
-  // }
 
   handleClick = () => {
     const status = this.state.isActive;
@@ -41,7 +25,7 @@ class Hamburger extends React.Component {
   };
 
   render() {
-    const { title, subtitle, lists } = this.props;
+    const { title, subtitle, lists, addList } = this.props;
 
     return (
       <section className={styles.component}>
@@ -60,10 +44,7 @@ class Hamburger extends React.Component {
           {lists.map((listData) => (
             <List key={listData.id} {...listData} />
           ))}
-          <Creator
-            text={settings.listCreatorText}
-            action={(title) => this.addList(title)}
-          />
+          <Creator text={settings.listCreatorText} action={addList} />
         </div>
       </section>
     );

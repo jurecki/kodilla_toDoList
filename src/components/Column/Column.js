@@ -7,31 +7,32 @@ import Creator from '../Creator/Creator';
 import Icon from '../Icon/Icon';
 
 class Column extends React.Component {
-  state = {
-    cards: this.props.cards || [],
+  static defaultProps = {
+    icon: settings.defaultColumnIcon,
   };
+
   static propTypes = {
     title: PropTypes.string,
     icon: PropTypes.node,
     cards: PropTypes.array,
+    id: PropTypes.node,
+    addCard: PropTypes.func,
   };
 
   render() {
+    const { cards, title, icon, addCard } = this.props;
     return (
       <section className={styles.component}>
         <h3 className={styles.title}>
-          {this.props.title}{' '}
+          {title}{' '}
           <span className={styles.icon}>
-            <Icon name={this.props.icon} />
+            <Icon name={icon} />
           </span>
         </h3>
-        {/* {this.state.cards.map((card) => (
-          <Card key={card.key} title={card.title} />
+        {cards.map((cardData) => (
+          <Card key={cardData.id} {...cardData} />
         ))}
-        <Creator
-          text={settings.cardCreatorText}
-          action={(title) => this.addCard(title)}
-        /> */}
+        <Creator text={settings.cardCreatorText} action={addCard} />
       </section>
     );
   }
