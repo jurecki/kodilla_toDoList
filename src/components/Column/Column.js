@@ -1,20 +1,15 @@
 import React from 'react';
 import styles from './Column.scss';
 import PropTypes from 'prop-types';
-import Card from '../Card/Card';
+import Card from '../Card/CardContainer';
 import { settings } from '../../data/dataStore';
 import Creator from '../Creator/Creator';
 import Icon from '../Icon/Icon';
 
-const Column = ({
-  title,
-  icon = settings.defaultColumnIcon,
-  cards,
-  addCard,
-}) => (
+const Column = ({ title, icon, cards, addCard }) => (
   <section className={styles.component}>
     <h3 className={styles.title}>
-      {title}
+      {title}{' '}
       <span className={styles.icon}>
         <Icon name={icon} />
       </span>

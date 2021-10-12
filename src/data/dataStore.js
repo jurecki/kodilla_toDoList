@@ -1,7 +1,7 @@
 export const settings = {
   columnCreatorText: 'Add new column',
   cardCreatorText: 'Add new card',
-  listCreatorText: 'Add new list',
+  listCreatorText: 'Add new LIST',
   creator: {
     buttonOK: 'OK',
     buttonCancel: 'Cancel',
@@ -13,6 +13,10 @@ export const settings = {
   },
   defaultListDescription: '<p>I can do all the things!!!</p>',
   defaultColumnIcon: 'list-alt',
+  icons: {
+    remove: 'trash',
+    edit: 'edit',
+  },
 };
 
 export const pageContents = {

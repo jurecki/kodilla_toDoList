@@ -6,7 +6,7 @@ import Column from '../Column/ColumnContainer';
 import { settings } from '../../data/dataStore';
 import ReactHtmlParser from 'react-html-parser';
 import Creator from '../Creator/Creator';
-import Burger from '../Burger/Burger';
+import Button from '../Button/Button';
 
 class List extends React.Component {
   static propTypes = {
@@ -19,48 +19,42 @@ class List extends React.Component {
   };
 
   state = {
-    isActive: true,
+    listIsActive: false,
   };
 
-  handleClick = () => {
-    const status = this.state.isActive;
-    this.setState({
-      isActive: !status,
-    });
-    console.log('click');
+  handleShowList = () => {
+    this.setState((prevState) => ({
+      listIsActive: !prevState.listIsActive,
+    }));
   };
 
   render() {
     const { description, columns, addColumn, title, image } = this.props;
     return (
       <section className={styles.component}>
-        <Burger
-          variant={this.state.isActive ? ' ' + styles.isActive : null}
-          onClick={this.handleClick}
-        />
-        {/* <div className={styles.burgerLine} onClick={this.handleClick}>
-          <div className={this.state.isActive ? ' ' + styles.isActive : null} />
-          <div className={this.state.isActive ? ' ' + styles.isActive : null} />
-          <div className={this.state.isActive ? ' ' + styles.isActive : null} />
-        </div> */}
-        <div
-          className={
-            styles.content + (this.state.isActive ? ' ' : ' ' + styles.isActive)
-          }
+        <Button
+          onClick={this.handleShowList}
+          variant={this.state.listIsActive ? 'danger' : ''}
         >
-          <Hero titleText={title} sourceImage={image} />
-          <div className={styles.description}>
-            {ReactHtmlParser(description)}
-          </div>
-          <div className={styles.columns}>
-            {columns.map((columnData) => (
-              <Column key={columnData.id} {...columnData} />
-            ))}
-          </div>
-          <div className={styles.creator}>
-            <Creator text={settings.columnCreatorText} action={addColumn} />
-          </div>
-        </div>
+          {this.state.listIsActive ? `Hide List` : `Show List ${title}`}
+        </Button>
+
+        {this.state.listIsActive ? (
+          <>
+            <Hero titleText={title} sourceImage={image} />
+            <div className={styles.description}>
+              {ReactHtmlParser(description)}
+            </div>
+            <div className={styles.columns}>
+              {columns.map((columnData) => (
+                <Column key={columnData.id} {...columnData} />
+              ))}
+            </div>
+            <div className={styles.creator}>
+              <Creator text={settings.columnCreatorText} action={addColumn} />
+            </div>
+          </>
+        ) : null}
       </section>
     );
   }

@@ -49,7 +49,7 @@ class Creator extends React.Component {
     return (
       <div className={styles.component}>
         <input
-          type="text"
+          type='text'
           placeholder={this.props.text}
           value={this.state.value}
           onChange={this.handleChange}
@@ -61,7 +61,7 @@ class Creator extends React.Component {
           }
         >
           <Button onClick={this.handleOK}>OK</Button>
-          <Button onClick={this.handleCancel} variant="danger">
+          <Button onClick={this.handleCancel} variant='danger'>
             cancel
           </Button>
         </div>
