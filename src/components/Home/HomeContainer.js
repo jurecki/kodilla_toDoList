@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import App from './App';
+import Home from './Home';
 import { createActionAddList } from '../../redux/listsRedux';
 
 const mapStateToProps = (state) => ({
@@ -21,4 +21,4 @@ const mapsDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapsDispatchToProps)(App);
+export default connect(mapStateToProps, mapsDispatchToProps)(Home);

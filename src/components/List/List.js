@@ -7,6 +7,7 @@ import { settings } from '../../data/dataStore';
 import ReactHtmlParser from 'react-html-parser';
 import Creator from '../Creator/Creator';
 import Button from '../Button/Button';
+import Container from '../Container/Container';
 
 class List extends React.Component {
   static propTypes = {
@@ -31,31 +32,33 @@ class List extends React.Component {
   render() {
     const { description, columns, addColumn, title, image } = this.props;
     return (
-      <section className={styles.component}>
-        <Button
-          onClick={this.handleShowList}
-          variant={this.state.listIsActive ? 'danger' : ''}
-        >
-          {this.state.listIsActive ? `Hide List` : `Show List ${title}`}
-        </Button>
+      <Container>
+        <section className={styles.component}>
+          <Button
+            onClick={this.handleShowList}
+            variant={this.state.listIsActive ? 'danger' : ''}
+          >
+            {this.state.listIsActive ? `Hide List` : `Show List ${title}`}
+          </Button>
 
-        {this.state.listIsActive ? (
-          <>
-            <Hero titleText={title} sourceImage={image} />
-            <div className={styles.description}>
-              {ReactHtmlParser(description)}
-            </div>
-            <div className={styles.columns}>
-              {columns.map((columnData) => (
-                <Column key={columnData.id} {...columnData} />
-              ))}
-            </div>
-            <div className={styles.creator}>
-              <Creator text={settings.columnCreatorText} action={addColumn} />
-            </div>
-          </>
-        ) : null}
-      </section>
+          {this.state.listIsActive ? (
+            <>
+              <Hero titleText={title} sourceImage={image} />
+              <div className={styles.description}>
+                {ReactHtmlParser(description)}
+              </div>
+              <div className={styles.columns}>
+                {columns.map((columnData) => (
+                  <Column key={columnData.id} {...columnData} />
+                ))}
+              </div>
+              <div className={styles.creator}>
+                <Creator text={settings.columnCreatorText} action={addColumn} />
+              </div>
+            </>
+          ) : null}
+        </section>
+      </Container>
     );
   }
 }

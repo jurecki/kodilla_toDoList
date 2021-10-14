@@ -1,7 +1,7 @@
 export const settings = {
   columnCreatorText: 'Add new column',
   cardCreatorText: 'Add new card',
-  listCreatorText: 'Add new LIST',
+  listCreatorText: 'CREATE NEW TO DO LIST',
   creator: {
     buttonOK: 'OK',
     buttonCancel: 'Cancel',
